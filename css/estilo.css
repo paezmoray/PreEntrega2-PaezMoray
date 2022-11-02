@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lora', serif;
+}
+
 /* HEADER */
 
 a {
@@ -11,16 +22,27 @@ a {
 header{
     background-color:  rgb(180, 34, 180);
     margin: 5px;
-    border: 3px salmon solid;
+    border: 2px salmon solid;
     padding: 5px;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    grid-area: header;
 }
 
 h1{
     text-align: center;
     color: rgb(226, 43, 226);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 4px 3px #41463d;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    grid-area: nav;
 }
 
 li{
@@ -36,7 +58,7 @@ li{
 main{
     background-color: rgb(250, 215, 244);
     margin: 5px;
-    border: 3px solid violet;
+    border: 2px solid violet;
     padding: 15px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -55,8 +77,29 @@ h2{
     width: 200px;
     height: 200px;
 }
+body main section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.imgProducto1 {
+body main section img {
+    width: 20rem;
+    border-radius: 4px;
+}
+
+body main section button{
+    border-radius: 5px;
+    background-color: #ec9cf6;
+    width: 5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    box-shadow: 5px 5px 7px 0px rgba(0, 0, 0,0.75);
+}
+
+
+/* .imgProducto1 {
     width: 200px;
     height: 200px;
     
@@ -90,14 +133,95 @@ h2{
     left: 50%;
     position: absolute;
     top: 130%;
-}
+} */
 
 footer{
     background-color:  rgb(180, 34, 180);
     font-size: 10px;
     margin: 5px;
-    border: 3px salmon solid;
+    border: 2px salmon solid;
     padding: 5px;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    grid-area: footer;
+}
+footer a {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+/* Trabajamos con GRID */
+
+.categorias {
+    grid-area: categ;
+}
+
+.imgProducto1 {
+    grid-area: imgProducto1;
+}
+
+.imgProducto2 {
+    grid-area: imgProducto2;
+}
+
+.imgProducto3 {
+    grid-area: imgProducto3;
+}
+
+.imgProducto4 {
+    grid-area: imgProducto4;
+}
+
+.gridPadre {
+    display: grid;
+    grid-template-areas: 
+    "header header header header"
+    "nav nav nav nav"
+    "categ categ categ categ"
+    "imgProducto1 imgProducto1 imgProducto2 imgProducto2"
+    "imgProducto1 imgProducto1 imgProducto2 imgProducto2"
+    "imgProducto3 imgProducto3 imgProducto4 imgProducto4"
+    "imgProducto3 imgProducto3 imgProducto4 imgProducto4"
+    "footer footer footer footer"
+    ;
+}
+
+/* Vista Tablet */
+@media (min-width:700px) and (max-width:1100px) {
+    .gridPadre {
+        grid-template-areas: 
+        "header header"
+        "nav nav"
+        "imgProducto1 imgProducto2"
+        "imgProducto3 imgProducto4"
+        "footer footer"
+        ;
+    }
+    section img {
+        width: 200px;
+    }
+} 
+
+/* Vista Movil */
+@media (max-width:699px) {
+    .gridPadre {
+        grid-template-areas: 
+        "header"
+        "nav"
+        "imgProducto1"
+        "imgProducto2"
+        "imgProducto3"
+        "imgProducto4"
+        "footer"
+        ;
+    }
+
+    html {
+        font-size: 80%;
+    }
+
+    nav {
+        position: static;
+    }
+
 }
